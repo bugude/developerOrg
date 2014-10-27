@@ -1,0 +1,260 @@
+<apex:component controller="DragDropToCloud.AboutUsController" allowDML="true">
+    <html>
+
+    <head>
+        <title>Drag, Drop &amp; Upload Files to Amazon S3</title>
+    </head>
+    <style>
+        .overlayDiv {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            filter: alpha(opacity=70);
+            opacity: 0.7;
+            top: 0px;
+            left: 0px;
+            position: fixed;
+            z-index: 500;
+        }
+        .labelSpan {
+            float: left;
+            margin-left: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+    <script type="text/javascript">
+        function ShowPopup(val) {
+            if (val) {
+                document.getElementById('contentLoading').style.display = 'block';
+            } else {
+                document.getElementById('contentLoading').style.display = 'none';
+            }
+        }
+    </script>
+
+    <body>
+        <apex:form id="pgForm">
+            <apex:outputPanel id="CompletePage">
+                <p>
+                    <span style="color: #ff8c00"><span style="font-size: 24px">Drag, Drop &amp; Upload Files to Amazon S3</span></span>
+                </p>
+                <p>
+                    Thank you again for choosing our wildly popular app "Drag, Drop &amp; Upload Files to Amazon S3"! We really appreciate your business.</p>
+                <p>
+                    <span style="font-size: 18px"><span style="color: #ff8c00">Features</span></span>
+                </p>
+                <ul>
+                    <li>
+                    	Directly upload files to Amazon S3 using drag and drop from Local Computer
+                    </li>
+                    <li>
+                        Works for any standard or custom objects to quickly add (upload) files (for e.g., quickly add screenshots to cases or sales orders to opportunities)</li>
+                    <li>
+                        Provide link to the Files on records in a related list
+                    </li>
+                    <li>
+                    	Overcome Attachment size limit per record
+                    </li>
+                </ul>
+                <p>
+                    &nbsp;</p>
+                <p>
+                    <span style="font-size: 18px"><span style="color: #ff8c00">Important Post Install Steps:</span></span>
+                </p>
+                <br/>
+                <apex:pagemessages id="step1msg"/>
+                <p>
+                    <span style="color: #ff8c00">STEP 1:</span> In order to use this tool, you will need to first set your Amazon S3 Secret and Access Key.(Need an Amazon S3 account?  Get it here: <a href="http://aws.amazon.com/" target="_blank">http://aws.amazon.com/​</a>)
+                </p>
+                <apex:commandButton id="cbCustomSetting" value="Click here to setup Amazon S3 Credentials" onclick="ShowPopup(true);" reRender="PopUp,step1msg,step2msg"  status="step1LoadingActionStatus" />
+                <apex:actionStatus id="step1LoadingActionStatus" >
+                    <apex:facet name="start" >
+                      <img src="/img/loading.gif" />                    
+                    </apex:facet>
+                </apex:actionStatus>                 
+                <br/><br/><br/>
+                <apex:pagemessages id="step2msg"/>
+                <p>
+                    <span style="color: #ff8c00">STEP 2:</span> In Step 2, you will need to create a bucket in Amazon S3
+                </p> 
+                <apex:commandButton id="cbCreateBucket" value="Click here to create a bucket in Amazon S3" action="{!CreateBucket}" reRender="step2msg" status="step2LoadingActionStatus" />
+                <apex:actionStatus id="step2LoadingActionStatus" >
+                    <apex:facet name="start" >
+                      <img src="/img/loading.gif" />                    
+                    </apex:facet>
+                </apex:actionStatus>                 
+                <br/><br/><br/>                
+
+                <p>
+                    <span style="color: #ff8c00">STEP 3:</span> In Step 3, you will need to set CORS settings in Amazon S3: (For detailed instructions with screenshots, <a target="_blank" href="http://satrangtech.com/dragdropuploadtoamazons3/howtosetupcors.htm">CLICK HERE</a>)
+                </p>                
+                <ol>
+                    <li>
+                        Login to Amazon S3 Console: <a href="https://console.aws.amazon.com/s3/home" target="_blank">https://console.aws.amazon.com/s3/home</a>
+                    </li>
+                    <li>
+                        Locate bucket <b><apex:outputText value="{!bucketName}"/></b>&nbsp;, click on same. On clicking, right pane will show properties for that bucket. Expand Permissions, Click "Edit CORS Configuration" and update CORS to allow force.com 
+                        <br/>for e.g. <br/>
+                        <p>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br />
+                        &lt;CORSConfiguration xmlns=&quot;http://s3.amazonaws.com/doc/2006-03-01/&quot;&gt;<br />
+                        &nbsp; &nbsp; &lt;CORSRule&gt;<br />
+                        &nbsp; &nbsp; &nbsp; &nbsp; &lt;AllowedOrigin&gt;*.force.com&lt;/AllowedOrigin&gt;<br />
+                        &nbsp; &nbsp; &nbsp; &nbsp; &lt;AllowedMethod&gt;PUT&lt;/AllowedMethod&gt;<br />
+                        &nbsp; &nbsp; &nbsp; &nbsp; &lt;AllowedMethod&gt;POST&lt;/AllowedMethod&gt;<br />
+                        &nbsp; &nbsp; &nbsp; &nbsp; &lt;AllowedMethod&gt;DELETE&lt;/AllowedMethod&gt;<br />
+                        &nbsp; &nbsp; &nbsp; &nbsp; &lt;AllowedMethod&gt;GET&lt;/AllowedMethod&gt;<br />
+                        &nbsp; &nbsp; &nbsp; &nbsp; &lt;AllowedHeader&gt;*&lt;/AllowedHeader&gt;<br />
+                        &nbsp; &nbsp; &lt;/CORSRule&gt;<br />
+                        &lt;/CORSConfiguration&gt;</p>                        
+                    </li>
+                </ol>
+                <br/>
+                
+                <p>
+                    <span style="color: #ff8c00">STEP 4:</span> In Step 4, you will need to create a lookup field on Cloud Documents object. Below are the required steps for adding lookup field (of object against which you want to perform documents upload) on Cloud Documents object:</p>
+                <p>
+                    Let&rsquo;s take an example of adding on Account lookup field (same process can be followed to add lookup field of other standard or custom objects).
+                </p>
+                <ol>
+                    <li>
+                        Go To Setup -&gt; Create -&gt; Objects-&gt;Cloud Documents</li>
+                    <li>
+                        Click on New Button (in Custom Fields &amp; Relationships section) and Enter details</li>
+                    <li>
+                        Provide following information in above screen :
+                        <ol>
+                            <li>Select Data Type: Lookup Relationship, click Next</li>
+                            <li>Select Related To: Account, click Next</li>
+                            <li>Field Label: Account (you can change it, if required)</li>
+                            <li>Field Name: Account (you can change it, if required), click Next</li>
+                            <li>Select Visible field level security for reference field for necessary profiles, click Next</li>
+                            <li>Add reference field to desired Page Layouts, click Next</li>
+                            <li>Add custom related lists to desired Page Layouts, click Save</li>
+                        </ol>
+                   </li>
+                </ol>                          
+                <br/>                                   
+                                  
+                <p>
+                    <span style="color: #ff8c00">STEP 5:</span> In Step 5, you will need to create a detail page button. Below are the required steps for adding custom detail page button &quot;Attach files to Amazon S3&quot;: <br/>(For detailed instructions with screenshots, <a target="_blank" href="http://satrangtech.com/dragdropuploadtoamazons3/howtosetupdetailpagebutton.htm">CLICK HERE</a>)</p>
+                <p>
+                    Let&rsquo;s take an example of adding a button on Account object (same process can be followed to add button on other standard or custom objects).
+                </p>
+                <ol>
+                    <li>
+                        Go To Setup -&gt; Customize -&gt; Accounts-&gt;Buttons and Links-&gt;New</li>
+                    <li>
+                        Click on New Button and Enter details</li>
+                    <li>
+                        Provide following information in above screen :
+                        <ol>
+                            <li>
+                                Label : Upload files to Amazon S3 (you can change it, if required)</li>
+                            <li>
+                                Name : Upload_files_to_Amazon_S3 (you can change it, if required)</li>
+                            <li>
+                                Description : Optional</li>
+                            <li>
+                                Display Type : Detail Page Link or Detail Page Button</li>
+                            <li>
+                                Behavior : Display in existing window without sidebar or header</li>
+                            <li>
+                                Content Source : URL</li>
+                            <li>
+                                Formula Editor : /apex/DragDropToCloud__DragDropUploader?parent_id=&#123;!<span style="color: #ff8c00">Account</span>.Id}
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        Finally add the button to required page layouts of Account (or object for which this button was created) and it's ready for use.
+                    </li> 
+                </ol>                                      
+                <span style="color: #ff8c00">Utility to generate formula which is required in Step5->3.7</span><br/><br/>
+                <apex:selectList id="chooseObject" required="false" onchange="refreshFormula()" value="{!SelectObject}" size="1">
+                    <apex:selectOptions value="{!items}" />
+                </apex:selectList>
+                <!--<apex:commandButton value="Get Formula" action="{!FormulaEditor}" reRender="formulaLink,pmsgs" status="getformulaLoadingActionStatus"/>-->
+                <apex:actionFunction name="refreshFormula" action="{!FormulaEditor}" reRender="formulaLink,pmsgs" status="getformulaLoadingActionStatus"/>
+                <apex:actionStatus id="getformulaLoadingActionStatus" >
+                    <apex:facet name="start" >
+                      <img src="/img/loading.gif" />                    
+                    </apex:facet>
+                </apex:actionStatus>                  
+                <br/><br/>
+                <apex:outputText id="formulaLink" style="font-weight:bold;" value="{!buttonLinkFormula}" />
+                <br/>
+                <p>
+                    &nbsp;</p>
+                <p>
+                    <span style="color: #ff8c00"><span style="font-size: 18px">Support</span>&nbsp;</span>
+                </p>
+                <p>
+                    If you are still facing difficulty or need any assistance, we are just an email away. Email your queries/assistance requests/feedback at <a href="mailto:support@satrangtech.com">support@satrangtech.com</a>.</p>
+                <p>
+                    &nbsp;</p>
+                <p>
+                    <span style="color: #ff8c00"><span style="font-size: 18px">Write a Review</span>&nbsp;</span>
+                </p>
+                <p>
+                    We would be delighted if you could take a moment to write a review of our app on the AppExchange. Simply visit <a target="_blank" href="https://appexchange.salesforce.com/listingDetail?listingId=a0N3000000B5ZPqEAN">Drag, Drop &amp; Upload Files to Amazon S3</a> to begin.</p>
+                <!--*****Popup*****-->
+                <apex:outputPanel id="PopUp">
+                </apex:outputPanel>
+                <div id="contentLoading" style="display:none;">
+                    <div class="overlayDiv"></div>
+                    <div id="contentLoadingImage" style="top:30%;padding:25px;left:25%;width:45%;position:fixed;background-color:#FFF;border:1px solid #DDD;box-shadow:0 5px 5px #222;z-index:600;">
+                        <!-- -webkit-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px; -->
+                        <apex:sectionHeader title="Setup Amazon S3 Credentials" />
+                        <br/>
+
+                        <table>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel style="font-weight:bold;" id="olAWSAccessKeyId" for="itAWSAccessKeyId">AWS Access Key Id:</apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:inputText style="width:450px;" value="{!AWSAccessKeyId}" id="itAWSAccessKeyId" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel style="font-weight:bold;" id="olAWSSecretKey" for="itAWSSecretKey">AWS Secret Key:</apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:inputText style="width:450px;" value="{!AWSSecretKey}" id="itAWSSecretKey" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel style="font-weight:bold;" id="olAWSCanonicalUserId" for="itAWSCanonicalUserId">AWS Canonical User Id:</apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:inputText style="width:450px;" value="{!AWSCanonicalUserId}" id="itAWSCanonicalUserId" />
+                                </td>
+                            </tr>
+                        </table>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <!--<button type="button" class="btnclassname" onclick="SubmitTimesheetPopup();">Accept</button>
+                        <button type="button" class="btnclassname" onclick="ShowPopup(false);">Cancel</button>-->
+                        <apex:commandButton value="Save" action="{!UpdateCustomSetting}" reRender="step1msg,Popup" oncomplete="ShowPopup(false);" status="popupLoadingActionStatus"/>
+                        <apex:commandButton value="Cancel" onclick="ShowPopup(false);" reRender="step1msg,PopUp" status="popupLoadingActionStatus"/>
+                        <apex:actionStatus id="popupLoadingActionStatus" >
+                            <apex:facet name="start" >
+                              <img src="/img/loading.gif" />                    
+                            </apex:facet>
+                        </apex:actionStatus>                        
+                    </div>
+                </div>
+
+                <!--**********-->
+            </apex:outputPanel>
+        </apex:form>
+    </body>
+
+    </html>
+
+</apex:component>

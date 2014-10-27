@@ -1,0 +1,19 @@
+<apex:page controller="RefreshScriptController">
+    <apex:form >
+        <apex:outputPanel id="panel">
+            <apex:outputText value="MyString = {!MyString}"/>
+            <apex:actionFunction name="SetString" rerender="panel">
+                <apex:param name="param1" value="" assignTo="{!MyString}"/>
+            </apex:actionFunction>
+            <script>
+                function JSetString() {
+                    SetString('{!MyString}' + '.');
+                }
+            </script>
+            <apex:outputPanel onclick="JSetString()" styleClass="btn">
+                Grow {!MyString} (works)
+            </apex:outputPanel>
+            <apex:commandButton onclick="JSetString(); return false;" value="Grow {!MyString} (unreliable)" rerender="panel"/>
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>

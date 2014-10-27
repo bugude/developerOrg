@@ -1,0 +1,515 @@
+<!---------------------------------------------------------------------------------------
+1. Created By : Shubhanshu Verma
+2. Reference : SAL-567
+3. Functionality:  Used in an Affiliate Portal as an Email Template Tab
+---------------------------------------------------------------------------------------->
+<apex:page standardStylesheets="false" sidebar="false">
+    <apex:form >
+        <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"/>
+        <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"/>
+        <apex:includeScript value="{!URLFOR($Resource.bootstrap, 'bootstrap/js/bootstrap.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.bootstrap, 'bootstrap/js/bootstrap.min.js')}"/>
+        <apex:stylesheet value="{!URLFOR($Resource.bootstrap, 'bootstrap/css/bootstrap.css')}"/>
+        <apex:stylesheet value="{!URLFOR($Resource.bootstrap, 'bootstrap/css/bootstrap.min.css')}"/>
+        <apex:stylesheet value="http://fonts.googleapis.com/css?family=Vollkorn"/>
+    
+        <script>
+            function CopyToClip(copytextid, holdtextid) 
+            {
+                holdtxt = document.getElementById(holdtextid);
+                //alert(holdtxt);
+                //alert(document.getElementById(copytextid));
+                holdtxt.innerText = document.getElementById(copytextid).innerText;
+                //alert(holdtxt.innerText);
+                var isCopied = window.clipboardData.setData('Text', holdtxt.innerText);
+                //alert(isCopied);
+            }
+        </script>
+
+        <style>
+            .nav-pills > .active > a, .nav-pills > .active > a:hover {
+            background-color: #C0101F;
+            }
+        
+            .nav-pills > .active > a, .nav-pills > .active > a:focus{
+            background-color:#C0101F;
+            }
+        
+            a:hover, a:focus {
+            color : #C0101F;
+            }
+            a{
+                color:#C0101F;
+            }
+        
+            .alef {
+                font-family: 'Vollkorn', serif;
+            }
+      
+            .LinkOptionHeader
+            {
+                font-size: large;
+                font-weight: bold;
+                padding-top: 30px;
+                padding: 10px;
+            }
+            .linkContainer
+            {
+                border-color: #BAB8B9;
+                border-style: solid;
+                border-width: 2px;
+                padding: 10px;
+            }
+            .pbSubheader {
+                font-size: large;
+                font-weight: bold;
+                background-color: #BAB8B9 !important;
+                border-color: none !important;
+            }
+     </style>
+     
+     <div id="Header Text">
+         <p style="padding-left:15px;font-family:Arial;font-size:medium; line-height:150%">
+             Below you will find a variety of Email Templates.<br></br>
+         </p>
+    </div>
+    
+    <!-- The following div creates tabs/pills for the labels recieved-->
+    <!-- If is true, the class should be active for that particular item -->
+    <!-- Tabs should point to divs with href serial number --> 
+    <div>      
+        <ul class="nav nav-pills" id="myTab">
+            <li>
+                <a href="#links1" data-toggle="tab">Business Development</a> 
+            </li>
+            <li>
+                <a href="#links2" data-toggle="tab">Health + Wellness</a> 
+            </li>
+            <li>
+                <a href="#links3" data-toggle="tab">Personal Development</a> 
+            </li>
+        </ul>
+
+        <div class="tab-content" style="border-style: groove;">
+<!---------------------------------------------------------------------------------------
+1. Four Different Email Templates for <<Business Development>>.     
+----------------------------------------------------------------------------------------->        
+            <div class="tab-pane" id="links1" style="padding-left:15px;font-family:Arial;font-size:medium; line-height:150%">
+                <apex:pageBlock id="pgBlock">
+                    <apex:pageBlockSection id="pbSec1" collapsible="true" columns="1">
+                        <apex:facet name="header"><span style="color:red">Email 1: To Opt-In</span></apex:facet>
+                        <!--<center><button type="button" onclick="CopyToClip('pre1','{!$Component.holdText1}')">Copy to Clipboard</button></center> -->
+                        <apex:outputText id="email1">
+                            <pre id="pre1" style="font-size:10pt;border:1px solid black;padding:5px;margin-left:0px;text-align:left;">
+Subj:  The 365 day dream life blueprint
+Subj:  Can you make real money doing good?
+
+Hello,
+I have a question for you.
+Have you been trying to figure out a way to create your dream life?
+One where you have...
+*time and location freedom
+*financial abundance
+*work that is rewarding
+*a healthy, thriving body and mind
+If so, you are about to learn something you may have never considered.
+But first, I need to know that you are ethical and truly care about people.
+If you don’t, this isn’t for you.  But if you do... and health and wellness are things that interest you, you will want to read on.
+You might be thinking that I am about to share some MLM, Biz Opp, or the next new IM course.
+Well, that couldn’t be farther from it.
+So what exactly am I talking about?
+I’m talking about a career in health coaching.
+
+If you think this is silly, you would be mistaken.
+
+Instead of explaining in detail why you should hear me out, I think the best thing for you to do would be to go watch this video about an ex-waitress who was able to earn back her tuition costs before she completed her training…
+
+<a>Go here to watch.</a>
+ 
+And make sure to opt-in for the free course demo... it is really cool.
+Again, please take the time to watch the whole video...it will open your mind.
+Regards,
+Signature
+P.S.  Next time I’m going to share how this is more than a financial opportunity...it is a complete lifestyle opportunity.
+<a>Go here to get your free course.</a>
+                            </pre>
+                        </apex:outputText>
+                        <apex:inputtextarea id="holdText1" Style="display:none"/>
+                    </apex:pageBlockSection>
+                    
+                    <apex:pageBlockSection id="pbSec2" title="Email 2: Day 3" collapsible="true" columns="1">
+                        <!--<center><button type="button" onclick="CopyToClip('pre2','{!$Component.holdText2}')">Copy to Clipboard</button></center> -->
+                        <apex:outputText id="email2">
+                            <pre id="pre2" style="font-size:10pt;border:1px solid black;padding:5px;margin-left:0px;text-align:left;">
+Subj: Ex Waitress Earns Over $75 an Hour Changing What People Eat
+Subj: Can You Earn Over $75 an Hour Changing What People Eat?
+Hello,
+If you are like me, you are tired of all the online marketing gurus trying to sell you the same re-hashed, get rich quick schemes over and over again.
+This is why I am so excited about the Institution for Integrative Nutrition.
+What we have here is a no B.S. way to completely transform your life and your finances… without sacrificing your personal integrity.
+Listen to IIN graduate Sharon Stevens share her story about how she went from being a waitress to health coaching and earning a great income.
+<a>Go here to discover Sharon’s story [Straight to Video].</a>
+Notice that Sharon was able to upgrade her lifestyle, while literally transforming the health issues of others.  
+Now I don’t preach a lot, but this is what it is really all about.  
+
+And as far as credibility is concerned, there is nothing I have seen that even comes close.
+IIN is a highly accredited school with exceptionally qualified faculty and advisors from all over the world!
+<a>Go here to discover Sharon’s story [Straight to Video].</a>
+
+Regards,
+Signature
+P.S.  After watching this, please email me back with feedback and questions.  I want to know if you were as impressed as I was.
+In my next my next email I will answer your most common concerns.
+And if you missed it earlier, <a>click here if you want to sample a free IIN course</a> [to course]
+                            </pre>
+                        </apex:outputText>
+                        <apex:inputtextarea id="holdText2" Style="display:none"/>
+                    </apex:pageBlockSection>
+                    
+                    <apex:pageBlockSection id="pbSec3" title="Email 3: Day 5" collapsible="true" columns="1">
+                        <!--<center><button type="button" onclick="CopyToClip('pre3','{!$Component.holdText3}')">Copy to Clipboard</button></center> -->
+                        <apex:outputText id="email3">
+                            <pre id="pre3" style="font-size:10pt;border:1px solid black;padding:5px;margin-left:0px;text-align:left;">
+Subj:  Your IIN questions answered
+Subj:  Questions about the Institute for Integrative Nutrition answered
+Hello,
+I have been flooded with questions about Sharon Steven’s <a>video</a> that I sent out the other day.
+First, I assure you that IIN is completely legitimate.  They are the largest nutrition school in the world and they partner with reputable folks like Apple!
+Second, yes the income claims are backed up by a credible source. I asked IIN for some stats and here are the results from the 2011 graduating class.
+*74% of the students launched a health coaching practice BEFORE graduating.  
+*Of these students, 48% were charging $100 an hour or more for health coaching services BEFORE graduation.
+If you do the math, this is a six-figure income and then some…
+But more importantly, the education IIN will give you as a Health Coach is second to none. 
+And their business training is crazy!  It is better than what you will find in most online or offline marketing programs.
+My understanding is that their “online only” discount of up to $1,000 is about to end, so if you really are interesting in creating an amazing income, a freedom based lifestyle, and being a positive force for humanity… 
+Then I would sign up now.  
+<a>Go here to get started and claim your discount.</a>
+
+The clock is ticking.
+Regards,
+Sig
+P.S.  Remember Alex Jamison, Morgan Spurlock’s chef in the movie Super Size Me? Well, she is an IIN graduate and here is what she had to say:
+“You won't find a program like this anywhere else. You'll get continued support on growing your business
+and making the education into a career, should you choose. I even enrolled my mom! IIN is the best investment in my education I ever made.”
+<a>Go here and get started now.</a>
+Also, Sharon told me that she would keep me posted when their online only discount is ending for good.
+So stay posted. 
+                            </pre>
+                        </apex:outputText>
+                        <apex:inputtextarea id="holdText3" Style="display:none"/>
+                    </apex:pageBlockSection>
+                    
+                    <apex:pageBlockSection id="pbSec4" title="Email 4: Day 7" collapsible="true" columns="1">
+                        <!-- <center><button type="button" onclick="CopyToClip('pre4','{!$Component.holdText4}')">Copy to Clipboard</button></center> -->
+                        <apex:outputText id="email4">
+                            <pre id="pre4" style="font-size:10pt;border:1px solid black;padding:5px;margin-left:0px;text-align:left;">
+Subject:  Last chance to save on Health Coach Training
+Subject:  [Final Day] Health Coach Training
+Hello,
+I just want to remind you that today is the last day that you can receive your online discount of up to $1,000 on the IIN training.
+I don’t know when they’re going to offer this kind of discount again, since their courses are in high demand and fill up quickly. 
+So if you are interested in what I think is one of the best career opportunities of 2014 then I would jump on this now.
+<a>Go here to get your IIN discount.</a>
+However, I understand if you just aren’t ready at this point in time to get started.
+Maybe it just isn’t the time.
+Because of this, I asked IIN if there was a way for you to get on their announcement list… so that when you are ready you can get involved then.
+Sharon told me that all you need to do is put your name and email in on the page I first sent you to get access to their free course sample.
+So, if you haven’t already, <a>go to this page</a> and provide your name and email.
+Regards,
+Signature
+P.S.  One thing you may have noticed if you watched the video, is that IIN graduates often go on to create big things.
+Here is a story from Heather Kenzie-Terry, IIN alumni from New York City:
+“Today, I no longer work ridiculous hours, I have a fitness plan, I have conquered my ailments and I live a balanced life. It isn’t always easy, but now I know how much
+I never would have guessed I would own NibMor, a raw chocolate company. Talk about the surprises of life! 
+
+We’ve been featured in all sorts of publications and on TV.
+Today, you can buy NibMor in 46 states in over 1,000 stores, and we are growing fast. The plans we have reach for the stars with a mission of health and wellness for all. I am truly blessed and grateful. I followed the simple instructions at Integrative Nutrition and here I am. Oh how sweet it is!”
+<a>Go here and get started now</a>
+                            </pre>
+                        </apex:outputText>
+                        <apex:inputtextarea id="holdText4" Style="display:none"/>
+                    </apex:pageBlockSection>
+                    <script> twistSection(document.getElementById('{!$Component.pgBlock.pbSec1}').getElementsByTagName('img')[0]) </script>
+                    <script> twistSection(document.getElementById('{!$Component.pgBlock.pbSec2}').getElementsByTagName('img')[0]) </script>
+                    <script> twistSection(document.getElementById('{!$Component.pgBlock.pbSec3}').getElementsByTagName('img')[0]) </script>
+                    <script> twistSection(document.getElementById('{!$Component.pgBlock.pbSec4}').getElementsByTagName('img')[0]) </script>
+                </apex:pageBlock>
+            </div>
+<!---------------------------------------------------------------------------------------
+2. Four Different Email Templates for <<Health + Wellness>>.
+---------------------------------------------------------------------------------------->                     
+            <div class="tab-pane" id="links2" style="padding-left:15px;font-family:Arial;font-size:medium; line-height:150%">
+                <apex:pageBlock id="pgBlock1">
+                    <apex:pageBlockSection id="pbSec5" title="Email 1: To Opt-In" collapsible="true" columns="1">
+                        <!-- <center><button type="button" onclick="CopyToClip('pre5','{!$Component.holdText5}')">Copy to Clipboard</button></center> -->
+                        <apex:outputText id="email5">
+                            <pre id="pre5" style="font-size:10pt;border:1px solid black;padding:5px;margin-left:0px;text-align:left;">
+Subj:  Attention Health Lovers:  Make a living following your passion
+Subj:  The most important email I have ever sent
+Subj: Surprise… This is Fastest Growing Career in Health
+
+Hello,
+The other day someone asked me how I was able to get my start helping people lead healthier lives. 
+Their real question was how I am able to make a great living doing so.
+Looking back, I never expected to actually make a living doing this. I just simply couldn’t imagine NOT doing this.
+So the reason I don’t normally answer this question is because it took a lot of passion, determination, hard work, luck and meeting the right people at the right time… not exactly a replicable formula!
+Over the years, I have kept a watch over all the people out there claiming they had the formula, and UNTIL NOW there hasn’t been one anywhere that I would feel even marginally comfortable recommending. 
+I saw nothing that actually teaches people how to really help other people with their health issues.  
+And, help them realistically create great income and lifestyle that wasn’t a “job”. 
+So, what has changed?
+Recently, I was introduced to a school whose faculty includes doctors like Mark Hyman, Deepak Chopra, and Dr. Andrew Weil.
+Aside from the big names, what I found is that the school is graduating students who are literally:
+*Reversing the health conditions of everyone they touch
+*Improving their own health 
+*Making incredible income (in their first year)
+*Finding happiness because their career and value are congruent
+And the best part, this happens to be the largest nutritional school in the world… with over 40,000 graduates and counting.
+If I would have been exposed to this school 10 years ago, I guarantee it would have reduced the time it took me to get where I am by at least tenfold.
+What is this school?
+It is called the Institute for Integrative Nutrition and I really can’t say anything more about it, you just have to check it out for yourself.
+As a favor to me, they have created a sample of one of their courses so you can experience how their educational technology actually works.
+Click Here to Get the Free Course  
+Enjoy,
+Signature
+P.S. After this, make sure to watch the presentation that one of their graduates, an ex-waitress from New York, has made for you that explains it all. (Insert Link)
+                            </pre>
+                        </apex:outputText>
+                        <apex:inputtextarea id="holdText5" Style="display:none"/>
+                    </apex:pageBlockSection>
+                    
+                    <apex:pageBlockSection id="pbSec6" title="Email 2: Day 3" collapsible="true" columns="1">
+                        <!-- <center><button type="button" onclick="CopyToClip('pre6','{!$Component.holdText6}')">Copy to Clipboard</button></center> -->
+                        <apex:outputText id="email6">
+                            <pre id="pre6" style="font-size:10pt;border:1px solid black;padding:5px;margin-left:0px;text-align:left;">
+Subj: Ex Waitress makes $75 per hour with a career in health
+Hello,
+Have you ever wondered what it would be like to actually make a great living helping people improve their health holistically?
+Can you imagine the feeling you would get every day knowing you were changing lives?
+I want to introduce you to an ex-waitress, Sharon Stevens, who chose a specific way to break into a career in health and never looked back.
+Go here to discover Sharon’s story.
+I want you to know that I have fully vetted the school that Sharon discovered.
+And I have never seen a more complete training or opportunity.
+And it is NOT some online marketing course.
+It is a legitimate and highly accredited school with exceptionally qualified faculty and advisors from all over the world!
+I could go on, but if you truly believe in helping people with their health issues AND want to make a six figure income with both time and location freedom…
+Then you have to watch Sharon’s presentation.
+
+Regards,
+Signature
+P.S.  After watching this presentation, please email me back with feedback and questions.  I want to know if you were as impressed as I was.
+And if you missed it earlier, click here to sample a free lesson of the IIN course [to course]
+                            </pre>
+                        </apex:outputText>
+                        <apex:inputtextarea id="holdText6" Style="display:none"/>
+                    </apex:pageBlockSection>
+                    
+                    <apex:pageBlockSection id="pbSec7" title="Email 3: Day 5" collapsible="true" columns="1">
+                        <!-- <center><button type="button" onclick="CopyToClip('pre7','{!$Component.holdText7}')">Copy to Clipboard</button></center> -->
+                        <apex:outputText id="email7">
+                            <pre id="pre7" style="font-size:10pt;border:1px solid black;padding:5px;margin-left:0px;text-align:left;">
+Subj:  Is health coaching really a career? 
+Subj:  Why choose a career in health?
+Hello,
+I have been flooded with questions about Sharon Steven’s video that I sent out the other day.
+First, I assure you that Sharon is a real person and a real Health Coach!
+Second, yes, the income claims are backed by a credible source.  I asked IIN personally for some stats and here are the results from the 2011 graduating class.
+*74% of the students launched a health coaching practice BEFORE graduating.  
+*Of these students, 48% were charging $100 an hour or more for health coaching services 
+BEFORE graduation.
+If you do the math, this is a six-figure income and then some…
+But more importantly, the education IIN will give you as a health coach is second to none.
+This is why they are an accredited school, and why you can transfer your credits to major University’s Masters Programs.
+
+It is the real thing.
+My understanding is that their “online only” discount of up to $1,000 is about to end, so if you really are interesting in helping people solve health problems AND having a terrific lifestyle…
+
+Then I would sign up now.
+Go here to get started and claim your discount [long copy]
+Regards,
+Sig
+P.S.  Remember Alex Jamison, Morgan Spurlock’s chef in the movie Super Size Me? Well, she is an IIN graduate and here is what she has to say:
+“You won't find a program like this anywhere else. You'll get continued support on growing your business
+and making the education into a career, should you choose. I even enrolled my mom! IIN is the best investment in my education I ever made.”
+Go here and get started now
+                            </pre>
+                        </apex:outputText>
+                        <apex:inputtextarea id="holdText7" Style="display:none"/>
+                    </apex:pageBlockSection>
+                    
+                    <apex:pageBlockSection id="pbSec8" title="Email 4: Day 7" collapsible="true" columns="1">
+                        <!-- <center><button type="button" onclick="CopyToClip('pre8','{!$Component.holdText8}')">Copy to Clipboard</button></center> -->
+                        <apex:outputText id="email8">
+                            <pre id="pre8" style="font-size:10pt;border:1px solid black;padding:5px;margin-left:0px;text-align:left;">
+Subject:  Last chance to save on Health Coach Training
+Subject:  [Final Day] Health Coach Training
+Hello,
+I just want to remind you that today is the last day that you can receive your online discount of up to $1,000 on IIN’s Health Coach Training Program.
+I don’t know when they’re going to offer this kind of discount again, since their courses are in high demand and fill up quickly. 
+So if you are interested in really helping people change their health situation and their lives, you will want to jump on this now.
+Go here to get your IIN discount.
+I mean, imagine being able to tell people you trained under professionals like Dr. Christiane Northrup, Deepak Chopra, Dr. Andrew Weil and more.
+There really is nothing else like it.
+However, I understand if you just aren’t ready at this point in time to get started.
+Maybe it just isn’t the time.
+Because of this, I asked IIN if there was a way for you to get on their announcement list… so that when you are ready you can get involved then.
+Sharon told me that all you need to do is put your name and email in on the page I first sent out, to get you access to their free course sample.
+So, if you haven’t already, go to this page  and provide your name and email.
+Regards,
+Signature
+P.S. Sharon shared a really cool story from Dara, a dentist who did the training with her, that I thought you might want to read: 
+“When I was doing my residency at Columbia I heard about the Institute for Integrative Nutrition and thought it was bogus, hocus-pocus, but I kept running into people who were talking about it…The curriculum was great and I appreciated how everyone was engaged the whole time, especially after dental school where the lectures were boring and people were sleeping through class. The learning was interactive, engaging and I learned ten times more in much less time.”
+Go here and get started now.
+                            </pre>
+                        </apex:outputText>
+                        <apex:inputtextarea id="holdText8" Style="display:none"/>
+                    </apex:pageBlockSection>
+                    <script> twistSection(document.getElementById('{!$Component.pgBlock1.pbSec5}').getElementsByTagName('img')[0]) </script>
+                    <script> twistSection(document.getElementById('{!$Component.pgBlock1.pbSec6}').getElementsByTagName('img')[0]) </script>
+                    <script> twistSection(document.getElementById('{!$Component.pgBlock1.pbSec7}').getElementsByTagName('img')[0]) </script>
+                    <script> twistSection(document.getElementById('{!$Component.pgBlock1.pbSec8}').getElementsByTagName('img')[0]) </script>
+                </apex:pageBlock>
+            </div>
+<!---------------------------------------------------------------------------------------
+3. Four Different Email Templates for <<Personal Development>>. 
+---------------------------------------------------------------------------------------->                        
+            <div class="tab-pane" id="links3" style="padding-left:15px;font-family:Arial;font-size:medium; line-height:150%">
+                <apex:pageBlock id="pgBlock2">
+                    <apex:pageBlockSection id="pbSec9" title="Email 1: To Opt-In" collapsible="true" columns="1">
+                        <!-- <center><button type="button" onclick="CopyToClip('pre9','{!$Component.holdText9}')">Copy to Clipboard</button></center> -->
+                        <apex:outputText id="email9">
+                            <pre id="pre9" style="font-size:10pt;border:1px solid black;padding:5px;margin-left:0px;text-align:left;">
+Subj:  The most important email I have ever sent
+Subj:  Surprising Personal Growth Income Opportunity
+Subj:  Six figures a year changing people’s lives?
+
+Hello,
+I have a question for you.
+Are you in a career that truly nourishes your soul?
+And if you are so lucky, does this career give you the income, time, and location freedom to pursue your passions?
+If you answered yes to both, then this might not be interesting to you.
+But if you did NOT answer yes, you may want to read on because I have discovered something that might just be able to help you achieve everything I mentioned above.
+And (thank goodness) it has NOTHING to do with MLM, typical Internet Marketing, or Business Opportunity.
+So what exactly am I talking about?
+I am talking about a career where you can help people improve their health, state of mind, and level of happiness… 
+All while providing you with a very nice living in your first year.
+Best of all, it all comes from a legitimate, accredited school with highly qualified instructors like Dr. Christiane Northrup, Deepak Chopra, and Dr. Andrew Weil on the faculty.
+I thought it sounded too good to be true, until I checked it out and experienced it for myself.
+It is called the Institute for Integrative Nutrition (IIN), and it is the largest nutrition school in the world.
+If you really want a career that nourishes you, I suggest you check it out for yourself.  
+They make it easy by giving you a free sample course so you can get a feel for what this is all about.
+Go here to get your free course
+Once you opt-in for the course, make sure to watch the video about the ex-waitress who paid off her tuition before graduating.
+Regards,
+Signature
+P.S.  Next time I’m going to share with you how this is more than a financial opportunity-it is a transformational one.
+Go here to get your free course
+                            </pre>
+                        </apex:outputText>
+                        <apex:inputtextarea id="holdText9" Style="display:none"/>
+                    </apex:pageBlockSection>
+                    
+                    <apex:pageBlockSection id="pbSec10" title="Email 2: Day 3" collapsible="true" columns="1">
+                        <!-- <center><button type="button" onclick="CopyToClip('pre10','{!$Component.holdText10}')">Copy to Clipboard</button></center> -->
+                        <apex:outputText id="email10">
+                            <pre id="pre10" style="font-size:10pt;border:1px solid black;padding:5px;margin-left:0px;text-align:left;">
+Subj: 
+Subj: Can you really make six figures with a career in health?
+Hello,
+Can you imagine the feeling you would get every day knowing you were changing lives?
+All while being surrounded by other growth-minded people who are genuine and committed to the same outcome.
+If so, I want to re-introduce you to an ex-waitress, Sharon Stevens, who was able to transform much more than just her finances.
+Watch her presentation and pay special attention to her story so you can witness her evolution for yourself. 
+Go here to discover Sharon’s story [Straight to Video]
+Notice her language and mindset… 
+After talking to Sharon now in person, I can tell you that she is completely authentic and true to her personal power.
+And I can also tell you that the quality of IIN’s Health Coach Training is indisputable.
+Quite honestly, I have never seen a more complete training or opportunity.
+And it is NOT some online marketing course.
+It is a legitimate and highly accredited school with exceptionally qualified faculty and advisors from all over the world!
+You won’t want to miss out on this extraordinary opportunity to transform your quality of life as well as the lives of others.
+Go here to discover Sharon’s story [Straight to Video]
+
+Regards,
+Signature
+P.S.  After watching this presentation, please email me back with feedback and questions.  I want to 
+know if you were as impressed as I was. In my next my next email I will answer your most common concerns.
+And if you missed it earlier, click here if you want to sample a free IIN course [to course]
+                            </pre>
+                        </apex:outputText>
+                        <apex:inputtextarea id="holdText10" Style="display:none"/>
+                    </apex:pageBlockSection>
+                    
+                    <apex:pageBlockSection id="pbSec11" title="Email 3: Day 5" collapsible="true" columns="1">
+                        <!-- <center><button type="button" onclick="CopyToClip('pre11','{!$Component.holdText11}')">Copy to Clipboard</button></center> -->
+                        <apex:outputText id="email11">
+                            <pre id="pre11" style="font-size:10pt;border:1px solid black;padding:5px;margin-left:0px;text-align:left;">
+Subj:  Your IIN questions answered
+Subj:  Questions about the Institute for Integrative Nutrition answered
+Hello,
+I have been flooded with questions about Sharon Steven’s video presentation that I sent out the other day.
+First, I assure you that Sharon is a real person, who is exactly who she claims to be through the story of her personal evolution. She is definitely committed to showing just how powerful IIN’s education can be.
+Second, yes the income claims are backed by a credible source. I personally asked IIN for some stats and here are the results from the 2011 graduating class.
+*74% of the students launched a health coaching practice BEFORE graduating.  
+*Of these students, 48% were charging $100 an hour or more for health coaching services BEFORE graduation.
+If you do the math, this is a six-figure income and then some…
+But more importantly, the education IIN will give you as a Health Coach is second to none.
+This is why they are an accredited school, and why you can transfer your credits to major University’s Masters Programs.
+
+It is the real thing.
+My understanding is that their “online only” discount of up to $1,000 is about to end, so if you really are interested in your own growth, in helping people others achieve optimal health, AND have a terrific lifestyle to boot…
+
+Then I would sign up now.  
+Go here to get started and claim your discount 
+
+If you have been playing small, it is time to start playing big and really make a difference.
+Regards,
+Sig
+P.S.  Remember Alex Jamison, Morgan Spurlock’s chef in the movie Super Size Me? Well, she is an IIN graduate and here is what she had to say:
+“You won't find a program like this anywhere else. You'll get continued support on growing your business and making the education into a career, should you choose. I even enrolled my mom! IIN is the best investment in my education I ever made.”
+Go here and get started now
+                            </pre>
+                        </apex:outputText>
+                        <apex:inputtextarea id="holdText11" Style="display:none"/>
+                    </apex:pageBlockSection>
+                    
+                    <apex:pageBlockSection id="pbSec12" title="Email 4: Day 7" collapsible="true" columns="1">
+                        <!-- <center><button type="button" onclick="CopyToClip('pre12','{!$Component.holdText12}')">Copy to Clipboard</button></center> -->
+                        <apex:outputText id="email12">
+                            <pre id="pre12" style="font-size:10pt;border:1px solid black;padding:5px;margin-left:0px;text-align:left;">
+Subject:  Last chance to save on Health Coach Training
+Subject:  [Final Day] Health Coach Training
+Hello,
+I just want to remind you that today is the last day that you can receive your online discount of up to $1,000 off IIN’s Health Coach Training Program.
+I don’t know when they’re going to offer this kind of discount again, since their courses are in high demand and fill up quickly. 
+So if you are interested in growing personally, living an extraordinary life, and having a career that allows time and location freedom… it is time to take action.
+Go here to get your IIN discount
+I mean, imagine being able to tell people you trained under guidance like Dr. Christiane Northrup, Deepak Chopra, Dr. Andrew Weil and more.
+There really is nothing else like it.
+However, I understand if you just aren’t ready at this point in time to get started.
+Maybe it just isn’t the time.
+Because of this, I asked IIN if there was a way you could get on their announcement list… so that when you are ready you can get involved then.
+Sharon told me that all you need to do is put your name and email in on the page I first sent out, to get you access to their free course sample.
+So, if you haven’t already, go to this page and provide your name and email.
+Regards,
+Signature
+P.S.  Sharon shared with me a really cool story from Melissa in New York City that I thought I would leave you with:
+
+ “I have yet to experience another learning environment as dynamic and engaging around health and nutrition as the one Integrative Nutrition offers. 
+It is so incredibly empowering to be surrounded by people who validate your journey towards self-defined health and wellness. I met so many beautiful and talented people at Integrative Nutrition, and I continue to meet them in my travels. 
+The support, resources, and energy have been amazing. As a health coach, I have been able to reach hundreds of people, just like you, in NYC and online, sharing the message that health and wellness is a universal and achievable right. I offer cooking demonstrations, workshops, and juice delivery. I never thought I'd be able to truly create a thriving practice that was in line with my values,
+but here I am!”
+Go here and get started now
+                            </pre>
+                        </apex:outputText>
+                        <apex:inputtextarea id="holdText12" Style="display:none"/>
+                    </apex:pageBlockSection>
+                    <script> twistSection(document.getElementById('{!$Component.pgBlock2.pbSec9}').getElementsByTagName('img')[0]) </script>
+                    <script> twistSection(document.getElementById('{!$Component.pgBlock2.pbSec10}').getElementsByTagName('img')[0]) </script>
+                    <script> twistSection(document.getElementById('{!$Component.pgBlock2.pbSec11}').getElementsByTagName('img')[0]) </script>
+                    <script> twistSection(document.getElementById('{!$Component.pgBlock2.pbSec12}').getElementsByTagName('img')[0]) </script>
+                </apex:pageBlock>
+            </div>
+        </div>
+    </div>
+    </apex:form>
+</apex:page>

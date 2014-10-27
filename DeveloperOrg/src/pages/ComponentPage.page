@@ -1,0 +1,30 @@
+<apex:page controller="MyPageController" showHeader="false">
+  <center>
+    <apex:outputPanel layout="block" style="font-size: 16pt; margin-top: 50px; width: 400px">
+      <h2>Sample Illustrating How to Establish Communication Between Page and Component</h2>
+    </apex:outputPanel> 
+    <apex:outputPanel layout="block" style="width: 300px;">
+      <hr/>
+      <h1>Component Shown below:</h1><hr/>
+      <c:MyComponent pageControllerName="{!this}" />
+      <hr/>
+      <br/><br/>
+      <apex:form >
+        <apex:commandButton style="font-size: 12pt; color: black" 
+             action="{!callComponentControllerMethod}" 
+             value="Call Component Controller Method" 
+             rerender="output" />
+        <br/>
+        <apex:outputText value="Clicking the button above will call the 
+                 method on the component controller to increment the initial
+                 value from the component above." />
+      </apex:form>
+      <apex:outputPanel id="output" style="font-size: 12pt;"> 
+        <center> 
+      <apex:outputText value="{!myComponentController.intValue}" />
+      <hr/>
+    </center>
+      </apex:outputPanel>
+    </apex:outputPanel>
+  </center>
+</apex:page>

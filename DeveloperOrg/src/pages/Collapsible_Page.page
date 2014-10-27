@@ -1,0 +1,26 @@
+<apex:page standardController="Account">
+    <script>
+        function ClickMe(copyText) {
+            alert("click me - " + copyText);
+        }
+    </script>
+    <apex:form id="frm">
+        <apex:pageBlock id="pgBlock">
+            <apex:pageBlockSection id="pbSec1" title="Email Opt 1" collapsible="true" columns="1">
+                <apex:pageBlockSectionItem ><apex:commandButton value="Test"/></apex:pageBlockSectionItem>
+                <center><button type="button" onclick="ClickMe('{!$Component.email1}')">Click Me!</button></center>
+                <apex:outputText id="email1">Testing</apex:outputText>
+            </apex:pageBlockSection>
+            <script> twistSection(document.getElementById('{!$Component.pgBlock.pbSec1}').getElementsByTagName('img')[0]) </script>
+            <apex:pageBlockSection title="Email Opt 2" collapsible="true">
+                <apex:outputText id="email2">Testing</apex:outputText>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Email Opt 3" collapsible="true">
+                <apex:outputText id="email3">Testing</apex:outputText>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Email Opt 4" collapsible="true">
+                <apex:outputText id="email4">Testing</apex:outputText>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
