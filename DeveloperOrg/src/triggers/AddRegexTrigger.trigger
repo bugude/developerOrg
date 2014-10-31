@@ -3,7 +3,7 @@
  * Author: Quinton Wall - qwall@salesforce.com
  */
 trigger AddRegexTrigger on Blacklisted_Word__c (before insert, before update) {
-
+	// Testing Package.xml
     for (Blacklisted_Word__c f : trigger.new)
     {
           if(f.Custom_Expression__c != NULL)

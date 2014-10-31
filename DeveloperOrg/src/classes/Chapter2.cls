@@ -1,5 +1,5 @@
 public class Chapter2 {
-	//Testing GIT - Jenkins Job on GitHub Push
+	//Testing GIT - Generate Package.xml
     /** Listing 2-1
       AND(
         NOT(
