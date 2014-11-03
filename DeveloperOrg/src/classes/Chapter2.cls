@@ -1,5 +1,5 @@
 public class Chapter2 {
-	//Testing GIT - Generate Package.xml
+	//Testing GIT - Deleting Reference pkgs
     /** Listing 2-1
       AND(
         NOT(

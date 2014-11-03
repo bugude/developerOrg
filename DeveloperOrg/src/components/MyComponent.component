@@ -1,5 +1,4 @@
 <apex:component controller="MyComponentController" >
-<!--  Testing Package.xml -->
   <apex:attribute name="pageControllerName" 
       type="PageControllerBase" 
       assignTo="{!pageController}" 

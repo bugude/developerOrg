@@ -1,5 +1,4 @@
 <apex:page controller="TableSorter" sidebar="false" showHeader="false">
-<!-- Testing package.xml -->
     <apex:pageBlock id="theaddrsblock">
         <apex:pageBlockTable value="{!accList}" var="a" id="theaddrs" styleClass="tablesorter" headerClass="header">
             <apex:column >
