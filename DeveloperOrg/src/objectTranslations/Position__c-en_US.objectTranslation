@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Position</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Positions</value>
+    </caseValues>
+    <fields>
+        <label><!-- Duration --></label>
+        <name>Duration__c</name>
+    </fields>
+    <fields>
+        <help><!-- Experience
+for 2 years 6 months it would be 2 + 6/12 = 2.5 --></help>
+        <label><!-- Experience --></label>
+        <name>Experience__c</name>
+    </fields>
+    <fields>
+        <help><!-- Location of the Position --></help>
+        <label><!-- Location --></label>
+        <name>Location__c</name>
+    </fields>
+    <fields>
+        <label><!-- Position Type --></label>
+        <name>Position_Type__c</name>
+        <picklistValues>
+            <masterLabel>Full Time</masterLabel>
+            <translation><!-- Full Time --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Part Time</masterLabel>
+            <translation><!-- Part Time --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Temp</masterLabel>
+            <translation><!-- Temp --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Requirements for the position --></help>
+        <label><!-- Requirements --></label>
+        <name>Requirements__c</name>
+    </fields>
+    <fields>
+        <label><!-- User --></label>
+        <name>User__c</name>
+        <relationshipLabel><!-- Positions --></relationshipLabel>
+    </fields>
+    <recordTypes>
+        <label><!-- Positions --></label>
+        <name>Positions</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Positions - 1 --></label>
+        <name>Positions_1</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Duration required when Type = “Temp” --></errorMessage>
+        <name>Temp_Duration_Validation</name>
+    </validationRules>
+</CustomObjectTranslation>

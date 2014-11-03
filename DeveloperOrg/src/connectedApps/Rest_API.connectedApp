@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>b.r.lakshman@gmail.com</contactEmail>
+    <contactPhone>6785595117</contactPhone>
+    <iconUrl>https://login.salesforce.com/logos/Salesforce/Clouds/icon.png</iconUrl>
+    <label>Rest API</label>
+    <logoUrl>https://login.salesforce.com/logos/Salesforce/Clouds/logo.png</logoUrl>
+    <oauthConfig>
+        <callbackUrl>https://login.salesforce.com/services/oauth2/callback</callbackUrl>
+        <consumerKey>3MVG9QDx8IX8nP5TmoyJGn1JWSsCGx2QVVJQrBQ4PfreAakhSSkeyBrvg53FLACN2Pynu508QpM7EbBFYIjo9</consumerKey>
+        <scopes>Full</scopes>
+    </oauthConfig>
+</ConnectedApp>
