@@ -1,4 +1,3 @@
-<!-- Testing Git - auto Deploy -->
 <apex:page showHeader="false" title="{!$Label.site.file_not_found}" cache="false">
   <apex:composition template="{!$Site.Template}">
     <apex:define name="body">

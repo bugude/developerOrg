@@ -1,4 +1,3 @@
-//Testing Git - Auto Deploy
 /**
  * Converts the blacklisted word to regex for used in keyword filtering.
  * Author: Quinton Wall - qwall@salesforce.com

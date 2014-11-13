@@ -196,6 +196,59 @@ For 2 years 6 months it is 2 + 6/12 = 2.5</inlineHelpText>
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>GitTest_1__c</fullName>
+        <externalId>false</externalId>
+        <label>GitTest_1</label>
+        <length>10</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GitTest_2__c</fullName>
+        <externalId>false</externalId>
+        <label>GitTest_2</label>
+        <picklist>
+            <picklistValues>
+                <fullName>One</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Two</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Three</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>GitTest_3__c</fullName>
+        <externalId>false</externalId>
+        <formula>1=1</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>GitTest_3</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>GitTest_4__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>GitTest_4</label>
+        <referenceTo>Interviewer__c</referenceTo>
+        <relationshipLabel>Candidates</relationshipLabel>
+        <relationshipName>Candidates</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Last_Name__c</fullName>
         <externalId>false</externalId>
         <label>Last Name</label>

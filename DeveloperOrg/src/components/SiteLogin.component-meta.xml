@@ -10,6 +10,11 @@
     </packageVersions>
     <packageVersions>
         <majorNumber>1</majorNumber>
+        <minorNumber>2</minorNumber>
+        <namespace>DragDropToCloud</namespace>
+    </packageVersions>
+    <packageVersions>
+        <majorNumber>1</majorNumber>
         <minorNumber>91</minorNumber>
         <namespace>EasyDescribe</namespace>
     </packageVersions>
@@ -22,6 +27,11 @@
         <majorNumber>1</majorNumber>
         <minorNumber>6</minorNumber>
         <namespace>al</namespace>
+    </packageVersions>
+    <packageVersions>
+        <majorNumber>1</majorNumber>
+        <minorNumber>33</minorNumber>
+        <namespace>copado</namespace>
     </packageVersions>
     <packageVersions>
         <majorNumber>1</majorNumber>
