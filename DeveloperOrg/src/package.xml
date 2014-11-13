@@ -1,1 +1,1 @@
-Prepare for Ant build
+<?xml version="1.0" encoding="UTF-8"?><Package xmlns="http://soap.sforce.com/2006/04/metadata"><types><members>Chapter2</members><members>TestGit</members><name>ApexClass</name></types><types><members>AddRegexTrigger</members><members>TestGitTrigger</members><name>ApexTrigger</name></types><types><members>FileNotFound</members><members>TestGit</members><name>ApexPage</name></types><version>31.0</version></Package>
