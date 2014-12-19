@@ -73,6 +73,35 @@ For 2 years 6 months it is 2 + 6/12 = 2.5 --></help>
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- GitTest_1 --></label>
+        <name>GitTest_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- GitTest_2 --></label>
+        <name>GitTest_2__c</name>
+        <picklistValues>
+            <masterLabel>One</masterLabel>
+            <translation><!-- One --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Three</masterLabel>
+            <translation><!-- Three --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Two</masterLabel>
+            <translation><!-- Two --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- GitTest_3 --></label>
+        <name>GitTest_3__c</name>
+    </fields>
+    <fields>
+        <label><!-- GitTest_4 --></label>
+        <name>GitTest_4__c</name>
+        <relationshipLabel><!-- Candidates --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- Last Name --></label>
         <name>Last_Name__c</name>
     </fields>
